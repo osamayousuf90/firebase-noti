@@ -5,6 +5,7 @@ import AddEmployee from "./AddEmployee";
 import EditEmployee from "./EditEmployee";
 import EmployeTable from "./EmployeTable";
 import ViewProfileDetail from "./ViewProfileDetail";
+import ProjectCard from "./ProjectCard";
 
 const Employee = () => {
   const [clickIndex, setClickIndex] = useState(-1);
@@ -72,7 +73,19 @@ const Employee = () => {
         </div>
       </div>
 
-      {select === 1 && (
+      <div className="employee_cardsBar row">
+        {[1, 2, 3, 4]?.map((item, index) => {
+          return (
+            <ProjectCard
+              setClickIndex={setClickIndex}
+              clickIndex={clickIndex}
+              index={index}
+            />
+          );
+        })}
+      </div>
+
+      {/* {select === 1 && (
         <div className="employee_cardsBar row">
           {fakeData?.map((item, index) => {
             return (
@@ -87,7 +100,7 @@ const Employee = () => {
         </div>
       )}
 
-      {select === 2 && <EmployeTable />}
+      {select === 2 && <EmployeTable />} */}
     </div>
   );
 };

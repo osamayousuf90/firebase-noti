@@ -144,19 +144,22 @@
       padding: 0px 10px;
       background: white;
       position: relative;
-      cursor: pointer;
     }
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1060px) {
   .employee_cardsBar {
     display: grid;
     grid-template-columns: repeat(2, 2fr);
+
+    div {
+      width: 90%;
+    }
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 768px) {
   .employee_topBar {
     display: flex;
     justify-content: space-between;
@@ -173,7 +176,7 @@
 
   .employee_searchBar {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 
   .employee_searchBar div {
@@ -190,11 +193,12 @@
 
   .employee_cardsBar {
     display: grid;
-    grid-template-columns: repeat(1, 2fr);
+    grid-template-columns: repeat(1, 1fr);
     align-items: center;
 
     div {
       margin: 10px 0px;
+      width: 96%;
     }
   }
 }
