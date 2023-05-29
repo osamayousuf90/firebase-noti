@@ -1,0 +1,118 @@
+.employeeTable {
+  border-radius: 15px;
+  position: relative;
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+  width: 98%;
+  margin: 0px 11px;
+
+  &_match {
+    background-color: #3fec9a;
+    padding: 10px;
+    border-radius: 5px;
+    color: #ffffff;
+    width: 100px;
+    margin: auto;
+  }
+  &_unmatch {
+    background-color: #ff5f1f;
+    padding: 10px;
+    border-radius: 5px;
+    color: #ffffff;
+    width: 100px;
+    margin: auto;
+  }
+  &_update {
+    background-color: #becd32;
+    padding: 10px;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    width: 100px;
+    margin: auto;
+  }
+  &_update:hover {
+    background-color: #717a1a;
+  }
+  &_btn {
+    border: 1px solid;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: #006082;
+  }
+  &_btn:hover {
+    background: #006082;
+    color: #ffffff;
+  }
+  i {
+    cursor: pointer;
+  }
+  i:hover {
+    color: #95c9db;
+  }
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  overflow-y: scroll !important;
+  height: auto;
+}
+.trbg {
+  background-color: #efefef;
+  th {
+    font-weight: 700 !important;
+    color: #25292b;
+  }
+}
+th {
+  font-weight: 700 !important;
+  color: #006082;
+}
+tr > th {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.432);
+  //   background-color: #DAD6D2 !important;
+  z-index: 99 !important;
+  color: rgb(58, 58, 58);
+  border: none;
+  position: sticky;
+  //   top: -20px;
+}
+th:first-child {
+  border-top-left-radius: 2px;
+}
+th:last-child {
+  border-top-right-radius: 2px;
+}
+th:first-child {
+  border-bottom-left-radius: 2px;
+}
+th:last-child {
+  border-bottom-right-radius: 2px;
+}
+td:first-child {
+  border-top-left-radius: 2px;
+}
+td:last-child {
+  border-top-right-radius: 2px;
+}
+td:first-child {
+  border-bottom-left-radius: 2px;
+}
+td:last-child {
+  border-bottom-right-radius: 2px;
+}
+th,
+td {
+  text-align: center;
+  color: #006082;
+  padding: 10px 15px;
+  font-size: 12px;
+  //   border-bottom: 1px solid rgba(128, 128, 128, 0.589);
+  white-space: nowrap;
+}
+.color {
+  background-color: #d5e7eb;
+}
