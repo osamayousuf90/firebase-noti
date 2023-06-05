@@ -24,25 +24,21 @@ const Crud = () => {
   // handle func
   const handleMe = (item, type, index) => {
     const findIfIdExist = tempValue?.find((res) => res?.id === item?.id);
+    const findIfTypeExist = tempValue?.find((res) => res?.type === item?.type);
     if (findIfIdExist) {
-      setTempValue(tempValue?.filter((res) => res?.id !== item?.id));
+      console.log("exist");
       list[index].type = type;
+      findIfTypeExist.type = type;
       setUpdate(!update);
     } else {
-      const findIfTypeExist = tempValue?.find(
-        (res) => res?.type === item?.type
-      );
-      if (findIfTypeExist) {
-        console.log("findIfTypeExist", findIfTypeExist);
-      } else {
-        const body = {
-          ...item,
-          type,
-        };
-        list[index].type = type;
-        tempValue.push(body);
-        setUpdate(!update);
-      }
+      console.log("pushed");
+      const body = {
+        ...item,
+        type,
+      };
+      list[index].type = type;
+      tempValue.push(body);
+      setUpdate(!update);
     }
   };
 
