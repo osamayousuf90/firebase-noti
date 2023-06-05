@@ -6,15 +6,16 @@ import EditEmployee from "./EditEmployee";
 import EmployeTable from "./EmployeTable";
 import ViewProfileDetail from "./ViewProfileDetail";
 import ProjectCard from "./ProjectCard";
+import AddProject from "./AddProject";
 
 const Employee = () => {
   const [clickIndex, setClickIndex] = useState(-1);
-  const [modal, setModal] = useState("");
+  const [modal, setModal] = useState("create");
   const [select, setSelect] = useState(1);
 
   return (
     <div className="employee">
-      {modal === "create" && <AddEmployee setModal={setModal} />}
+      {modal === "create" && <AddProject setModal={setModal} />}
       {modal === "edit" && <EditEmployee setModal={setModal} />}
       {modal === "view" && <ViewProfileDetail setModal={setModal} />}
       <div className="employee_topBar">

@@ -82,14 +82,14 @@ const ProjectCard = ({ setClickIndex, clickIndex, index }) => {
       <div className="projectCard_progress">
         <div className="wrapper">
           <p>Progress</p>
-          <p className="percentage">100%</p>
+          <p className="percentage">60%</p>
         </div>
       </div>
 
       <div class="projectCard_progressBar">
         <div
           class=" progress-bar bg-success"
-          style={{ height: "5px", width: "100%" }}
+          style={{ height: "5px", width: "60%" }}
         >
           <p></p>
         </div>
