@@ -117,7 +117,7 @@ const Crud = () => {
         list[index].type = type;
         findIfTypeExist.type = type;
         setUpdate(!update);
-      } else {
+      } else {                                                       
         console.log("exist");
         list[index].type = type;
         findIfTypeExist.type = type;
