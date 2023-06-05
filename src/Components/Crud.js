@@ -111,10 +111,18 @@ const Crud = () => {
     const findIfIdExist = tempValue?.find((res) => res?.id === item?.id);
     const findIfTypeExist = tempValue?.find((res) => res?.type === item?.type);
     if (findIfIdExist) {
-      console.log("exist");
-      list[index].type = type;
-      findIfTypeExist.type = type;
-      setUpdate(!update);
+      if (findIfTypeExist?.type === type) {
+        console.log("type not same");
+        setTempValue(tempValue?.filter((res) => res?.id !== item?.id));
+        list[index].type = type;
+        findIfTypeExist.type = type;
+        setUpdate(!update);
+      } else {
+        console.log("exist");
+        list[index].type = type;
+        findIfTypeExist.type = type;
+        setUpdate(!update);
+      }
     } else {
       console.log("pushed");
       const body = {
@@ -126,6 +134,8 @@ const Crud = () => {
       setUpdate(!update);
     }
   };
+
+  console.log(tempValue);
 
   // const checkIfExistById = tempValue?.find((res) => res?.id === item?.id);
   // const checkIfTypeSame = tempValue?.some((res) => res?.type === type);
@@ -153,7 +163,7 @@ const Crud = () => {
       <div class="container mt-3">
         <h2>CRUD</h2>
         <p>Prac</p>
-        {/* <table class="table table-striped">
+        <table class="table table-striped">
           <thead>
             <tr>
               <th>Actions</th>
@@ -168,8 +178,10 @@ const Crud = () => {
                   <td>
                     {" "}
                     <button onClick={() => handleMe(item, 1, index)}>
-                      {" "}
-                      {item?.type === 1 ? "UnAdd" : "Add"}
+                      {tempValue?.some((res) =>
+                        res?.type === item?.type ? "UnAdd" : "Add"
+                      )}
+                      {/* {item?.type === 1 ? "UnAdd" : "Add"} */}
                     </button>{" "}
                     <button onClick={() => handleMe(item, 2, index)}>
                       {item?.type === 2 ? "Untrash" : "Trash"}
@@ -184,11 +196,11 @@ const Crud = () => {
               );
             })}
           </tbody>
-        </table> */}
-        {prac?.items?.map((item, index) => {
+        </table>
+        {/* {prac?.items?.map((item, index) => {
           return (
             <>
-              {/* Outer  */}
+              Outer 
               <div
                 onClick={() => handleOutFolder(item, index, item?.isFolder)}
                 style={{
@@ -201,7 +213,7 @@ const Crud = () => {
                 <p>{item?.name}</p>
               </div>
 
-              {/* Inner */}
+              Inner
               {item?.isFolder === true &&
                 item?.items?.map((res, index) => {
                   return (
@@ -219,7 +231,7 @@ const Crud = () => {
                         <p>{res?.name}</p>
                       </div>
 
-                      {/* Inner Inside */}
+                      Inner Inside
                       {res?.isFolder === true &&
                         res?.items?.map((item) => {
                           return (
@@ -239,7 +251,7 @@ const Crud = () => {
                 })}
             </>
           );
-        })}
+        })} */}
       </div>
     </div>
   );
