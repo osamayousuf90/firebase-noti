@@ -20,6 +20,91 @@ const Crud = () => {
   ]);
   const [tempValue, setTempValue] = useState([]);
   const [update, setUpdate] = useState(false);
+  var [prac, setPrac] = useState({
+    id: "1",
+    name: "root",
+    isFolder: true,
+    items: [
+      {
+        id: "2",
+        name: "public",
+        isFolder: false,
+        items: [
+          {
+            id: "3",
+            name: "public nested 1",
+            isFolder: false,
+            items: [
+              {
+                id: "4",
+                name: "index.html",
+                isFolder: false,
+                items: [],
+              },
+              {
+                id: "5",
+                name: "hello.html",
+                isFolder: false,
+                items: [],
+              },
+            ],
+          },
+          {
+            id: "6",
+            name: "public_nested_file",
+            isFolder: false,
+            items: [],
+          },
+        ],
+      },
+      {
+        id: "7",
+        name: "src",
+        isFolder: false,
+        items: [
+          {
+            id: "8",
+            name: "App.js",
+            isFolder: false,
+            items: [],
+          },
+          {
+            id: "9",
+            name: "Index.js",
+            isFolder: false,
+            items: [],
+          },
+          {
+            id: "10",
+            name: "styles.css",
+            isFolder: false,
+            items: [],
+          },
+        ],
+      },
+      {
+        id: "11",
+        name: "package.json",
+        isFolder: false,
+        items: [],
+      },
+    ],
+  });
+
+  // handle outer folder
+  const handleOutFolder = (item, index, isOpen) => {
+    prac.items[index].isFolder = !isOpen;
+    setUpdate(!update);
+    console.log("a", item);
+  };
+
+  // haldle inner folder
+  const handleInnerFolder = (item, index, isOpen) => {
+    const findObj = item;
+    item.isFolder = !isOpen;
+    console.log("findObj", findObj);
+    setUpdate(!update);
+  };
 
   // handle func
   const handleMe = (item, type, index) => {
@@ -41,8 +126,6 @@ const Crud = () => {
       setUpdate(!update);
     }
   };
-
-  console.log("tempValue", tempValue);
 
   // const checkIfExistById = tempValue?.find((res) => res?.id === item?.id);
   // const checkIfTypeSame = tempValue?.some((res) => res?.type === type);
@@ -70,7 +153,7 @@ const Crud = () => {
       <div class="container mt-3">
         <h2>CRUD</h2>
         <p>Prac</p>
-        <table class="table table-striped">
+        {/* <table class="table table-striped">
           <thead>
             <tr>
               <th>Actions</th>
@@ -101,7 +184,62 @@ const Crud = () => {
               );
             })}
           </tbody>
-        </table>
+        </table> */}
+        {prac?.items?.map((item, index) => {
+          return (
+            <>
+              {/* Outer  */}
+              <div
+                onClick={() => handleOutFolder(item, index, item?.isFolder)}
+                style={{
+                  padding: "10px 8px",
+                  background: "lightgrey",
+                  margin: "5px 0px",
+                  cursor: "pointer",
+                }}
+              >
+                <p>{item?.name}</p>
+              </div>
+
+              {/* Inner */}
+              {item?.isFolder === true &&
+                item?.items?.map((res, index) => {
+                  return (
+                    <>
+                      <div
+                        onClick={() =>
+                          handleInnerFolder(res, index, res?.isFolder)
+                        }
+                        style={{
+                          background: "yellow",
+                          padding: " 5px 5px",
+                          margin: "2px 40px",
+                        }}
+                      >
+                        <p>{res?.name}</p>
+                      </div>
+
+                      {/* Inner Inside */}
+                      {res?.isFolder === true &&
+                        res?.items?.map((item) => {
+                          return (
+                            <div
+                              style={{
+                                background: "grey",
+                                padding: "2px 5px",
+                                margin: "2px 100px",
+                              }}
+                            >
+                              <p>{item?.name}</p>
+                            </div>
+                          );
+                        })}
+                    </>
+                  );
+                })}
+            </>
+          );
+        })}
       </div>
     </div>
   );
