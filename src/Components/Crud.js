@@ -31,7 +31,7 @@ const Crud = () => {
         setTempValue(tempValue?.filter((res) => res?.id !== item?.id));
         setUpdate(!update);
         list[index].type = 0;
-      }
+      } 
       // setUpdate(!update);
     } else {
       console.log("item not exist");
@@ -65,7 +65,7 @@ const Crud = () => {
                     {" "}
                     <button onClick={() => handleMe(item, 1, index)}>
                       {" "}
-                      {tempValue?.type === 1 ? "UnAdd" : "Add"}
+                      {item?.type === 1 ? "UnAdd" : "Add"}
                     </button>{" "}
                     <button onClick={() => handleMe(item, 2, index)}>
                       {item?.type === 2 ? "Untrash" : "Trash"}
