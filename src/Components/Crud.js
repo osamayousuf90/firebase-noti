@@ -166,19 +166,15 @@ const Crud = () => {
                   <td>
                     {" "}
                     <button onClick={() => handleMe(item, 1)}>
-                      {tempValue.some((x) => x.type === item.type)
-                        ? "Remove"
-                        : "Add"}
+                      {tempValue.some((x) => x.type === 1) ? "Remove" : "Add"}
                     </button>
                     <button onClick={() => handleMe(item, 2)}>
-                      {tempValue.some((x) => x.id === item.id)
+                      {tempValue.some((x) => x.type === 2)
                         ? "UnTrash"
                         : "Trash"}
                     </button>{" "}
                     <button onClick={() => handleMe(item, 3)}>
-                      {tempValue.some((x) => x.id === item.id)
-                        ? "UnView"
-                        : "View"}
+                      {tempValue.some((x) => x.type === 3) ? "UnView" : "View"}
                     </button>{" "}
                   </td>
                   <td>{item?.name}</td>
