@@ -107,31 +107,18 @@ const Crud = () => {
   };
 
   // handle func
-  const handleMe = (item, type, index) => {
-    const findIfIdExist = tempValue?.find((res) => res?.id === item?.id);
-    const findIfTypeExist = tempValue?.find((res) => res?.type === item?.type);
-    if (findIfIdExist) {
-      if (findIfTypeExist?.type === type) {
-        console.log("type not same");
-        setTempValue(tempValue?.filter((res) => res?.type !== item?.type));
-        list[index].type = type;
-        findIfTypeExist.type = type;
+  const handleMe = (item, type) => {
+    const findById = tempValue?.findIndex((res) => res?.id === item?.id);
+    if (findById !== -1) {
+      if (item?.type !== type) {
+        setTempValue(tempValue?.filter((res) => res?.id !== item?.id));
         setUpdate(!update);
       } else {
-        console.log("exist");
-        setTempValue(tempValue?.filter((res) => res?.id !== item?.id));
-        list[index].type = type;
-        findIfTypeExist.type = type;
+        tempValue[findById].type = type;
         setUpdate(!update);
       }
     } else {
-      console.log("pushed");
-      const body = {
-        ...item,
-        type,
-      };
-      list[index].type = type;
-      tempValue.push(body);
+      tempValue.push({ ...item, type });
       setUpdate(!update);
     }
   };
@@ -178,17 +165,17 @@ const Crud = () => {
                 <tr>
                   <td>
                     {" "}
-                    <button onClick={() => handleMe(item, 1, index)}>
-                      {tempValue.some((x) => x.id === item.id)
+                    <button onClick={() => handleMe(item, 1)}>
+                      {tempValue.some((x) => x.type === item.type)
                         ? "Remove"
                         : "Add"}
                     </button>
-                    <button onClick={() => handleMe(item, 2, index)}>
+                    <button onClick={() => handleMe(item, 2)}>
                       {tempValue.some((x) => x.id === item.id)
                         ? "UnTrash"
                         : "Trash"}
                     </button>{" "}
-                    <button onClick={() => handleMe(item, 3, index)}>
+                    <button onClick={() => handleMe(item, 3)}>
                       {tempValue.some((x) => x.id === item.id)
                         ? "UnView"
                         : "View"}
