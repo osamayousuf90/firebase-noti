@@ -1,12 +1,12 @@
 import "./App.scss";
 import Crud from "./Components/Crud";
-import Employee from "./Components/Employee";
+import LocalStorage from "./Components/LocalStorage";
 
 function App() {
   return (
     <div className="wrapper">
-      {/* <Employee /> */}
-      <Crud />
+      {/* <Crud /> */}
+      <LocalStorage />
     </div>
   );
 }
