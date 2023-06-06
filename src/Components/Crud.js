@@ -113,12 +113,13 @@ const Crud = () => {
     if (findIfIdExist) {
       if (findIfTypeExist?.type === type) {
         console.log("type not same");
-        setTempValue(tempValue?.filter((res) => res?.id !== item?.id));
+        setTempValue(tempValue?.filter((res) => res?.type !== item?.type));
         list[index].type = type;
         findIfTypeExist.type = type;
         setUpdate(!update);
-      } else {                                                       
+      } else {
         console.log("exist");
+        setTempValue(tempValue?.filter((res) => res?.id !== item?.id));
         list[index].type = type;
         findIfTypeExist.type = type;
         setUpdate(!update);
@@ -135,7 +136,7 @@ const Crud = () => {
     }
   };
 
-  console.log(tempValue);
+  console.log("tempValue", tempValue);
 
   // const checkIfExistById = tempValue?.find((res) => res?.id === item?.id);
   // const checkIfTypeSame = tempValue?.some((res) => res?.type === type);
@@ -178,16 +179,19 @@ const Crud = () => {
                   <td>
                     {" "}
                     <button onClick={() => handleMe(item, 1, index)}>
-                      {tempValue?.some((res) =>
-                        res?.type === item?.type ? "UnAdd" : "Add"
-                      )}
-                      {/* {item?.type === 1 ? "UnAdd" : "Add"} */}
-                    </button>{" "}
+                      {tempValue.some((x) => x.id === item.id)
+                        ? "Remove"
+                        : "Add"}
+                    </button>
                     <button onClick={() => handleMe(item, 2, index)}>
-                      {item?.type === 2 ? "Untrash" : "Trash"}
+                      {tempValue.some((x) => x.id === item.id)
+                        ? "UnTrash"
+                        : "Trash"}
                     </button>{" "}
                     <button onClick={() => handleMe(item, 3, index)}>
-                      {item?.type === 3 ? "UnView" : "View"}
+                      {tempValue.some((x) => x.id === item.id)
+                        ? "UnView"
+                        : "View"}
                     </button>{" "}
                   </td>
                   <td>{item?.name}</td>
@@ -197,6 +201,14 @@ const Crud = () => {
             })}
           </tbody>
         </table>
+
+        {tempValue?.map((item) => {
+          return (
+            <p>
+              Name : {item?.name} , Type : {item?.type}
+            </p>
+          );
+        })}
         {/* {prac?.items?.map((item, index) => {
           return (
             <>
