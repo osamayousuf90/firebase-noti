@@ -16,7 +16,7 @@ const LocalStorage = () => {
   };
 
   // update
-  const handleUpdateField = (e, item) => {
+  const handleUpdateField = (e) => {
     const eventValue = e?.target?.value;
     setTempName(eventValue);
     localStorage.setItem("items", JSON.stringify(data));
@@ -24,17 +24,18 @@ const LocalStorage = () => {
 
   // final update
   const finalUpdate = (id, type) => {
+    const findObj = data?.find((res) => res?.id === id);
+    const oldName = findObj?.name;
     if (type === 1) {
-      const findObj = data?.find((res) => res?.id === id);
       if (findObj?.name !== tempName) {
-        findObj.name = tempName;
+        findObj.name = tempName ? tempName : oldName;
         setClickIndex(-1);
         localStorage.setItem("items", JSON.stringify(data));
         setUpdate(!update);
       }
-      // console.log("findObj", findObj);
-    } else {
+    } else if (type === 2) {
       setClickIndex(-1);
+      setTempName("");
     }
   };
 
@@ -49,6 +50,7 @@ const LocalStorage = () => {
     if (data) {
       localStorage.setItem("items", JSON.stringify(data));
     }
+    console.log("data", data);
   }, [data]);
 
   useEffect(() => {
@@ -74,38 +76,62 @@ const LocalStorage = () => {
 
       <br />
 
-      {data?.map((item, index) => {
-        return (
-          <div>
-            {clickeIndex === index ? (
-              <>
+      <table id="customers">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Delete</th>
+        </tr>
+        {data?.map((item, index) => {
+          return (
+            <tr>
+              <td>{item?.id}</td>
+              {clickeIndex === index ? (
+                <>
+                  <td>
+                    <input
+                      type="text"
+                      onChange={(e) => handleUpdateField(e)}
+                      defaultValue={item?.name}
+                      placeholder="Update Value"
+                    />{" "}
+                    <button onClick={() => finalUpdate(item?.id, 1)}>
+                      Update
+                    </button>{" "}
+                    <button onClick={() => finalUpdate(item?.id, 2)}>
+                      Cancel
+                    </button>{" "}
+                  </td>{" "}
+                </>
+              ) : (
+                <>
+                  <td>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <p onClick={() => setClickIndex(index)}>{item?.name}</p>{" "}
+                    </div>
+                  </td>
+                </>
+              )}
+              <td>
                 {" "}
-                <input
-                  type="text"
-                  onChange={(e) => handleUpdateField(e, item)}
-                  defaultValue={item?.name}
-                  placeholder="Update Value"
-                />{" "}
-                <button onClick={() => finalUpdate(item?.id, 1)}>Update</button>{" "}
-                <button onClick={() => finalUpdate(item?.id, 2)}>Cancel</button>{" "}
-              </>
-            ) : (
-              <>
-                <div style={{ display: "flex", alignItems: "center" }}>
-                  <p onClick={() => setClickIndex(index)}>{item?.name}</p>{" "}
-                  <button
-                    onClick={() => {
-                      handleDelete(item);
-                    }}
-                  >
-                    Delete
-                  </button>
-                </div>
-              </>
-            )}
-          </div>
-        );
-      })}
+                <button
+                  style={{ marign: "0 20px" }}
+                  onClick={() => {
+                    handleDelete(item);
+                  }}
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          );
+        })}
+      </table>
     </div>
   );
 };
