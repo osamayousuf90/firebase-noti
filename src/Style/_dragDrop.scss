@@ -1,0 +1,94 @@
+.dragDrop {
+  width: 50%;
+  padding: 10px 5px;
+  height: 150px;
+  position: relative;
+  border: 2px dashed lightgrey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &_uploader {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    input {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+  }
+
+  &_cloudIcon {
+    font-size: 40px !important;
+    color: #dde4e4;
+  }
+
+  &_text {
+    margin: 20px 0;
+
+    p {
+      color: #c2c2c2;
+      font-weight: 650;
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .browser {
+      color: #8bc3ec;
+      border-bottom: 1px solid #8bc3ec;
+      padding-bottom: 2px;
+    }
+  }
+
+  &_dragDropList {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 5px 0;
+  }
+
+  &_list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 15px 20px;
+    margin: 5px 0;
+    background-color: #f6f8fa;
+    cursor: pointer;
+
+    .csvIcon {
+      font-size: 26px;
+      color: #449de5;
+      display: flex;
+      align-items: center;
+    }
+
+    .trashIcon {
+      font-size: 21px;
+      color: lightgrey;
+    }
+  }
+
+  &_fileName {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+
+    .file {
+      margin: 0;
+      color: #707070;
+      font-weight: 600;
+    }
+
+    .fileSize {
+      margin: 0;
+      color: #a2a4a5;
+      font-size: 12px;
+    }
+  }
+}
