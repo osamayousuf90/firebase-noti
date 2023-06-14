@@ -6,7 +6,14 @@ const DragDrop = () => {
 
   //  handle add
   const handleAdd = (e) => {
-    if (e?.target?.files[0]?.name?.includes("xls")) {
+    if (
+      e?.target?.files[0]?.type?.includes("application/vnd.ms-excel") ||
+      e?.target?.files[0]?.type?.includes("text/csv") ||
+      e?.target?.files[0]?.type?.includes(
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+      ) ||
+      e?.target?.files[0]?.type?.includes(".csv")
+    ) {
       if (list?.length < 1) {
         setUpdate(!update);
         const selectedFile = e.target.files;
@@ -35,7 +42,14 @@ const DragDrop = () => {
   const handleDrop = (event) => {
     const { files } = event.dataTransfer;
     event.preventDefault();
-    if (files[0]?.name?.includes("xls")) {
+    if (
+      files[0]?.name?.includes("application/vnd.ms-excel") ||
+      files[0]?.name?.includes("text/csv") ||
+      files[0]?.name?.includes(
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+      ) ||
+      files[0]?.name?.includes(".csv")
+    ) {
       if (list?.length < 1) {
         const { files } = event.dataTransfer;
         const selectedFile = files;
@@ -70,6 +84,8 @@ const DragDrop = () => {
 
     return Math.max(fileSizeInBytes, 0.1).toFixed(1) + byteUnits[i];
   }
+
+  console.log("list", list);
 
   return (
     <div className="wrapper">
