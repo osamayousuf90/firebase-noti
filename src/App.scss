@@ -9,14 +9,6 @@ body {
   background-color: #f7f7f7;
 }
 
-.wrapper {
-  width: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 80px;
-}
 
 // Component
 @import "./Style/dragDrop";
