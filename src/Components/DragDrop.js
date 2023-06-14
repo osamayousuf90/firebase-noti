@@ -6,22 +6,23 @@ const DragDrop = () => {
 
   //  handle add
   const handleAdd = (e) => {
-    if (list?.length < 1) {
-      setUpdate(!update);
-      const selectedFile = e.target.files;
-      console.log("selectedFile", selectedFile);
-      const selectedFilesArray = Array.from(selectedFile);
-      console.log("selectedFilesArray", selectedFilesArray);
+    if (e?.target?.files[0]?.name?.includes("xls")) {
+      if (list?.length < 1) {
+        setUpdate(!update);
+        const selectedFile = e.target.files;
+        const selectedFilesArray = Array.from(selectedFile);
+        const imageArray = selectedFilesArray?.map((a) => {
+          let fileName = a?.name;
+          let fileSize = a?.size;
 
-      const imageArray = selectedFilesArray?.map((a) => {
-        let fileName = a?.name;
-        let fileSize = a?.size;
+          const arrObjImg = { fileName: fileName, fileSize: fileSize };
+          return arrObjImg;
+        });
 
-        const arrObjImg = { fileName: fileName, fileSize: fileSize };
-        return arrObjImg;
-      });
-
-      setList(list.concat(imageArray));
+        setList(list.concat(imageArray));
+      }
+    } else {
+      alert("CSV File Allow Only");
     }
   };
 
@@ -29,6 +30,35 @@ const DragDrop = () => {
   const handleDelete = (item) => {
     setList(list?.filter((res) => res !== item));
   };
+
+  const handleDrop = (event) => {
+    const { files } = event.dataTransfer;
+    event.preventDefault();
+    if (files[0]?.name?.includes("xls")) {
+      if (list?.length < 1) {
+        const { files } = event.dataTransfer;
+        const selectedFile = files;
+        const selectedFilesArray = Array.from(selectedFile);
+        const imageArray = selectedFilesArray?.map((a) => {
+          let fileName = a?.name;
+          let fileSize = a?.size;
+
+          const arrObjImg = { fileName: fileName, fileSize: fileSize };
+          return arrObjImg;
+        });
+
+        setList(list.concat(imageArray));
+      }
+    } else {
+      alert("CSV File Allow Only");
+    }
+  };
+
+  const handleDragOver = (event) => {
+    event.preventDefault();
+  };
+
+  // return kb or mb depend of file size
 
   function getReadableFileSizeString(fileSizeInBytes) {
     var i = -1;
@@ -41,11 +71,9 @@ const DragDrop = () => {
     return Math.max(fileSizeInBytes, 0.1).toFixed(1) + byteUnits[i];
   }
 
-  console.log("list", list);
-
   return (
     <div className="wrapper">
-      <div className="dragDrop">
+      <div onDrop={handleDrop} onDragOver={handleDragOver} className="dragDrop">
         <div className="dragDrop_uploader">
           <input
             type="file"
