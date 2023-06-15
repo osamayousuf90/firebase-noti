@@ -43,12 +43,12 @@ const DragDrop = () => {
     const { files } = event.dataTransfer;
     event.preventDefault();
     if (
-      files[0]?.name?.includes("application/vnd.ms-excel") ||
-      files[0]?.name?.includes("text/csv") ||
-      files[0]?.name?.includes(
+      files[0]?.type?.includes("application/vnd.ms-excel") ||
+      files[0]?.type?.includes("text/csv") ||
+      files[0]?.type?.includes(
         "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
       ) ||
-      files[0]?.name?.includes(".csv")
+      files[0]?.type?.includes(".csv")
     ) {
       if (list?.length < 1) {
         const { files } = event.dataTransfer;

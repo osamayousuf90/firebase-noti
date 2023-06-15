@@ -8,7 +8,7 @@ function App() {
     <div className="wrapper">
       {/* <Crud /> */}
       {/* <LocalStorage /> */}
-      <DragDrop />
+      {/* <DragDrop /> */}
     </div>
   );
 }

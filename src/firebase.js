@@ -16,4 +16,5 @@ const app = initializeApp(firebaseConfig);
 const firebaseApp = initializeApp(firebaseConfig);
 const messaging = getMessaging(firebaseApp);
 
+
 export default app;
