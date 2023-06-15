@@ -25,13 +25,14 @@ const DragDrop = () => {
           const arrObjImg = { fileName: fileName, fileSize: fileSize };
           return arrObjImg;
         });
-
-        setList(list.concat(imageArray));
+        setList([ ...list , ...imageArray ]);
       }
     } else {
       alert("CSV File Allow Only");
     }
   };
+
+  console.log("list ====>", list)
 
   // handle delte
   const handleDelete = (item) => {
