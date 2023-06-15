@@ -63,7 +63,7 @@ const DragDrop = () => {
           return arrObjImg;
         });
 
-        setList(list.concat(imageArray));
+        setList([...list , ...imageArray]);
       }
     } else {
       alert("CSV File Allow Only");
