@@ -1,5 +1,6 @@
 import "./App.scss";
 import Crud from "./Components/Crud";
+import Dealflow from "./Components/Dealflow";
 import DragDrop from "./Components/DragDrop";
 import LocalStorage from "./Components/LocalStorage";
 
@@ -80,25 +81,26 @@ function App() {
   //   return test;
   // };
 
-  const check = (name) => {
-    var a = name?.split(" ")?.map((res) => {
-      return res
-    });
+  // const check = (name) => {
+  //   var a = name?.split(" ")?.map((res) => {
+  //     return res
+  //   });
 
-    for (let i = 0; i < a?.length; i++) {
-      ans += a[i][0]?.toUpperCase();
-    }
+  //   for (let i = 0; i < a?.length; i++) {
+  //     ans += a[i][0]?.toUpperCase();
+  //   }
 
-    return ans;
-  };
+  //   return ans;
+  // };
 
-  console.log(check("john bills"));
+  // console.log(check("john bills"));
 
   return (
     <div className="wrapper">
       {/* <Crud /> */}
       {/* <LocalStorage /> */}
       {/* <DragDrop /> */}
+      <Dealflow />
     </div>
   );
 }
