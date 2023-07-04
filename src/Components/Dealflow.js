@@ -146,7 +146,6 @@ const Dealflow = () => {
     }
 
 
-    console.log("dataToSend1 ======>", dataToSend1)
 
 
 
