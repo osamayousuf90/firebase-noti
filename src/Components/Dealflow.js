@@ -49,11 +49,13 @@ const Dealflow = () => {
 
     // handle action stars 1
     const handleAction1 = (item, type, index) => {
-        stars[index].type = stars[index].type === type ? 0 : type
+        console.log("type ====>", type)
+        console.log("stars[index] ===>", stars[index])
+        stars[index].type = stars[index]?.type === type ? 0 : type
         if (item?.type !== type) {
             setDataToSend1(dataToSend1?.filter(res => res?.id !== item?.id))
         }
-        if (dataToSend2?.find(res => res?.id == item?.id)) {
+        if (dataToSend1?.find(res => res?.id == item?.id)) {
             const check = dataToSend1?.find(res => res?.id == item?.id)
             check.type = check.type === type ? 0 : type
             setUpdate(!update)
@@ -72,7 +74,7 @@ const Dealflow = () => {
     const handleAction2 = (item, type, index) => {
         trash[index].type = trash[index].type === type ? 0 : type
         if (item?.type !== type) {
-            setDataToSend2(dataToSend2?.filter(res => res?.id !== item?.id))
+            setDataToSend2(dataToSend1?.filter(res => res?.id !== item?.id))
         }
         if (dataToSend2?.find(res => res?.id == item?.id)) {
             const check = dataToSend2?.find(res => res?.id == item?.id)
@@ -102,13 +104,13 @@ const Dealflow = () => {
 
     // handle action watch 3
     const handleAction3 = (item, type, index) => {
-        watch[index].type = watch[index].type === type ? 0 : type
+        watch[index].type = watch[index]?.type === type ? 0 : type
         if (item?.type !== type) {
             setDataToSend3(dataToSend3?.filter(res => res?.id !== item?.id))
         }
         if (dataToSend3?.find(res => res?.id == item?.id)) {
             const check = dataToSend3?.find(res => res?.id == item?.id)
-            check.type = check.type === type ? 0 : type
+            check.type = check?.type === type ? 0 : type
             setUpdate(!update)
         } else {
             const body = {
