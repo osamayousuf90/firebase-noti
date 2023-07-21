@@ -28,7 +28,7 @@ const Dealflow = () => {
     const handleAction0 = (item, type, index) => {
         unprocesed[index].type = unprocesed[index].type === type ? 0 : type
         if (item?.type !== type) {
-            setDataToSend1(dataToSend0?.filter(res => res?.id !== item?.id))
+            setDataToSend0(dataToSend0?.filter(res => res?.id !== item?.id))
         }
         if (dataToSend0?.find(res => res?.id == item?.id)) {
             const check = dataToSend0?.find(res => res?.id == item?.id)
@@ -74,7 +74,7 @@ const Dealflow = () => {
     const handleAction2 = (item, type, index) => {
         trash[index].type = trash[index].type === type ? 0 : type
         if (item?.type !== type) {
-            setDataToSend2(dataToSend1?.filter(res => res?.id !== item?.id))
+            setDataToSend2(dataToSend2?.filter(res => res?.id !== item?.id))
         }
         if (dataToSend2?.find(res => res?.id == item?.id)) {
             const check = dataToSend2?.find(res => res?.id == item?.id)
