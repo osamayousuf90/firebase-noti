@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Chart } from "react-google-charts";
 import CanvasJSReact from '@canvasjs/react-charts';
 import { AgChartsReact } from 'ag-charts-react';
+import { Card, Title, AreaChart } from "@tremor/react";
 
 export const data = [
     ["Year", "Sales", "Expenses", "Profit", "Example"],
@@ -46,7 +47,7 @@ export const options = {
     vAxis: {
         title: 'Values', // Customize your vAxis title here
         titleTextStyle: {
-            fontSize: 14,
+            fontSize: 5,
         },
         position: 'bottom', // This moves the labels to the bottom
     },
@@ -80,6 +81,11 @@ const options2 = {
     },
     toolTip: {
         shared: true
+    },
+    axisX: {
+        valueFormatString: "MMM",
+        // labelAngle: -50,
+        labelFontColor: "black",
     },
     data: [
         {
