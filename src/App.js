@@ -2,6 +2,7 @@ import "./App.scss";
 import Crud from "./Components/Crud";
 import Dealflow from "./Components/Dealflow";
 import DragDrop from "./Components/DragDrop";
+import Graphs from "./Components/Graphs";
 import LocalStorage from "./Components/LocalStorage";
 
 function App() {
@@ -100,7 +101,8 @@ function App() {
       {/* <Crud /> */}
       {/* <LocalStorage /> */}
       {/* <DragDrop /> */}
-      <Dealflow />
+      {/* <Dealflow /> */}
+      <Graphs />
     </div>
   );
 }

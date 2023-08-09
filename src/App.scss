@@ -40,3 +40,21 @@ body {
   background-color: #04aa6d;
   color: white;
 }
+
+
+.gridParent {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 10px 10px;
+  width: 80%;
+
+  #chart1 svg>rect {
+    /*#salesChart is ID of your google chart*/
+    fill: #F4F4F4;
+  }
+
+
+  &_child {
+    margin: 10px 10px;
+  }
+}
