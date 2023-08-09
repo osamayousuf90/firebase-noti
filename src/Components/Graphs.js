@@ -69,27 +69,62 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const options2 = {
     theme: "light2",
-    animationEnabled: true,
-    exportEnabled: true,
     title: {
-        text: "Number of iPhones Sold"
+        text: "Comparison of Exchange Rates - 2017"
     },
+    subtitles: [{
+        text: "GBP & USD to INR"
+    }],
     axisY: {
-        title: "Number of iPhones ( in Million )"
+        prefix: "₹"
+    },
+    toolTip: {
+        shared: true
     },
     data: [
         {
             type: "area",
-            xValueFormatString: "YYYY",
-            yValueFormatString: "#,##0.## Million",
+            name: "GBP",
+            showInLegend: true,
+            xValueFormatString: "MMM YYYY",
+            yValueFormatString: "₹#,##0.##",
+            color: "#C6DAFC", // Change the background color for this series
+            showInLegend: true,
             dataPoints: [
-                { x: new Date(2017, 0), y: 7.6 },
-                { x: new Date(2016, 0), y: 7.3 },
-                { x: new Date(2015, 0), y: 6.4 },
-                { x: new Date(2014, 0), y: 5.3 },
-                { x: new Date(2013, 0), y: 4.5 },
-                { x: new Date(2012, 0), y: 3.8 },
-                { x: new Date(2011, 0), y: 3.2 }
+                { x: new Date("2017- 01- 01"), y: 5.927 },
+                { x: new Date("2017- 02- 01"), y: 10.609 },
+                { x: new Date("2017- 03- 01"), y: 15.428 },
+                { x: new Date("2017- 04- 01"), y: 25.259 },
+                { x: new Date("2017- 05- 01"), y: 30.153 },
+                { x: new Date("2017- 06- 01"), y: 40.180 },
+                { x: new Date("2017- 07- 01"), y: 40.840 },
+                { x: new Date("2017- 08- 01"), y: 60.671 },
+                { x: new Date("2017- 09- 01"), y: 70.496 },
+                { x: new Date("2017- 10- 01"), y: 70.007 },
+                { x: new Date("2017- 11- 01"), y: 70.233 },
+                { x: new Date("2017- 12- 01"), y: 70.276 }
+            ]
+        },
+        {
+            type: "area",
+            name: "USD",
+            showInLegend: true,
+            xValueFormatString: "MMM YYYY",
+            yValueFormatString: "₹#,##0.##",
+            color: "#CCADC1",
+            dataPoints: [
+                { x: new Date("2017- 01- 01"), y: 2.515 },
+                { x: new Date("2017- 02- 01"), y: 5.725 },
+                { x: new Date("2017- 03- 01"), y: 10.86 },
+                { x: new Date("2017- 04- 01"), y: 15.29 },
+                { x: new Date("2017- 05- 01"), y: 20.51 },
+                { x: new Date("2017- 06- 01"), y: 25.62 },
+                { x: new Date("2017- 07- 01"), y: 20.2 },
+                { x: new Date("2017- 08- 01"), y: 15.935 },
+                { x: new Date("2017- 09- 01"), y: 5.31 },
+                { x: new Date("2017- 10- 01"), y: 3.75 },
+                { x: new Date("2017- 11- 01"), y: 2.49 },
+                { x: new Date("2017- 12- 01"), y: 1.84 }
             ]
         }
     ]
