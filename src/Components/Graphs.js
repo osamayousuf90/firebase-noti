@@ -2,23 +2,103 @@ import React, { useState } from 'react'
 import { Chart } from "react-google-charts";
 import CanvasJSReact from '@canvasjs/react-charts';
 import { AgChartsReact } from 'ag-charts-react';
-import { Card, Title, AreaChart } from "@tremor/react";
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+} from 'chart.js';
+import { Bar, Line } from 'react-chartjs-2';
+import { faker } from '@faker-js/faker';
+import { useEffect } from 'react';
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend
+);
 
-export const data = [
-    ["Year", "Sales", "Expenses", "Profit", "Example"],
-    ["2014", 1000, 400, 200, 50],
-    ["2015", 1170, 460, 250, 50],
-    ["2016", 660, 1120, 300, 50],
-    ["2017", 1030, 540, 350, 50],
-    ["2014", 1000, 400, 200, 50],
-    ["2015", 1170, 460, 250, 50],
-    ["2016", 660, 1120, 300, 50],
-    ["2017", 1030, 540, 350, 50],
-    ["2014", 1000, 400, 200, 50],
-    ["2015", 1170, 460, 250, 50],
-    ["2016", 660, 1120, 300, 50],
-    ["2017", 1030, 540, 350, 50],
-];
+
+
+
+export const options = {
+    responsive: true,
+    plugins: {
+        legend: {
+            position: 'top',
+        },
+        title: {
+            display: true,
+            text: 'Chart.js Bar Chart',
+        },
+    },
+};
+
+const labels = ['8/9/23', '8/16/23', '8/23/23', '8/30/23', '9/6/23', '9/13/23', '9/20/23', '9/13/23', '9/20/23', '9/13/23', '9/20/23'];
+
+const randomNumber = (val1, val2) => {
+    var res = 0
+    var arr = []
+    for (let z = 0; z < labels?.length; z++) {
+        for (let i = val1; val1 < val2; val1++) {
+            // res = Math.floor(val1 * i)
+            arr.push(res)
+        }
+    }
+    return arr
+}
+
+randomNumber()
+
+export const data = {
+    labels,
+    datasets: [
+        {
+            label: 'Deals in stage 1',
+            data: randomNumber(0, 10),
+            backgroundColor: '#FC8A00',
+        },
+        {
+            label: 'Deals in Socialization',
+            data: randomNumber(0, 4),
+            backgroundColor: '#B6DCAD',
+        },
+        {
+            label: 'Deals in Diligence',
+            data: randomNumber(0, 20),
+            backgroundColor: '#FD726F',
+        },
+        {
+            label: 'Deals Preparing to Close',
+            data: randomNumber(),
+            backgroundColor: '#FEAAA7',
+        },
+    ],
+};
+
+
+
+
+// export const data = [
+//     ["Year", "Sales", "Expenses", "Profit", "Example"],
+//     ["2014", 1000, 400, 200, 50],
+//     ["2015", 1170, 460, 250, 50],
+//     ["2016", 660, 1120, 300, 50],
+//     ["2017", 1030, 540, 350, 50],
+//     ["2014", 1000, 400, 200, 50],
+//     ["2015", 1170, 460, 250, 50],
+//     ["2016", 660, 1120, 300, 50],
+//     ["2017", 1030, 540, 350, 50],
+//     ["2014", 1000, 400, 200, 50],
+//     ["2015", 1170, 460, 250, 50],
+//     ["2016", 660, 1120, 300, 50],
+//     ["2017", 1030, 540, 350, 50],
+// ];
 
 export const data3 = [
     ["Year", "Sales", "Expenses", "Profit"],
@@ -36,22 +116,22 @@ export const data3 = [
     ["2017", 1030, 540, 350],
 ];
 
-export const options = {
-    chart: {
-        title: "Company Performance",
-        subtitle: "Sales, Expenses, and Profit: 2014-2017",
-    },
-    colors: ['#FED4B4', '#FCAA58', '#C3D1BE', "#FF0000"], // Specify the colors for each bar
-    bars: 'vertical',
-    isStacked: true,
-    vAxis: {
-        title: 'Values', // Customize your vAxis title here
-        titleTextStyle: {
-            fontSize: 5,
-        },
-        position: 'bottom', // This moves the labels to the bottom
-    },
-};
+// export const options = {
+//     chart: {
+//         title: "Company Performance",
+//         subtitle: "Sales, Expenses, and Profit: 2014-2017",
+//     },
+//     colors: ['#FED4B4', '#FCAA58', '#C3D1BE', "#FF0000"], // Specify the colors for each bar
+//     bars: 'vertical',
+//     isStacked: true,
+//     vAxis: {
+//         title: 'Values', // Customize your vAxis title here
+//         titleTextStyle: {
+//             fontSize: 5,
+//         },
+//         position: 'bottom', // This moves the labels to the bottom
+//     },
+// };
 
 export const option3 = {
     chart: {
@@ -251,16 +331,16 @@ const Graphs = () => {
         ];
     }
 
+
+
+    // useEffect(() => {
+    //     randomNumber()
+    // }, [])
+
     return (
         <div className='gridParent'>
             <div className='gridParent_child'>
-                <Chart
-                    chartType="Bar"
-                    width="100%"
-                    height="400px"
-                    data={data}
-                    options={options}
-                />
+                <Bar options={options} data={data} />
             </div>
             <div className='gridParent_child'>
                 <CanvasJSChart options={options2}
@@ -269,13 +349,7 @@ const Graphs = () => {
             </div>
 
             <div className='gridParent_child'>
-                <Chart
-                    chartType="Bar"
-                    width="100%"
-                    height="400px"
-                    data={data3}
-                    options={option3}
-                />
+                <Bar options={options} data={data} />
             </div>
             <div style={{ height: "400px" }} className='gridParent_child'>
                 <AgChartsReact options={options4} />
