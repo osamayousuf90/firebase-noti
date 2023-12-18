@@ -10,9 +10,13 @@ const LocalStorage = () => {
 
   // add
   const handleAdd = () => {
-    setData([...data, { name: name, id: Date.now() }]);
-    setUpdate(!update);
-    setName("");
+    if (!name) {
+      alert('Name required')
+    } else {
+      setData([...data, { name: name, id: Date.now() }]);
+      setUpdate(!update);
+      setName("")
+    }
   };
 
   // update
@@ -26,18 +30,29 @@ const LocalStorage = () => {
   const finalUpdate = (id, type) => {
     const findObj = data?.find((res) => res?.id === id);
     const oldName = findObj?.name;
+    console.log("tempName", tempName)
+    console.log("oldName", oldName)
     if (type === 1) {
-      if (findObj?.name !== tempName) {
-        findObj.name = tempName ? tempName : oldName;
-        setClickIndex(-1);
+      if (tempName) {
+        if (findObj?.name !== tempName) {
+          findObj.name = tempName ? tempName : oldName;
+          setClickIndex(-1);
+          localStorage.setItem("items", JSON.stringify(data));
+          setUpdate(!update);
+        }
+      } else {
+        setData(data?.filter((item) => item?.id !== id))
         localStorage.setItem("items", JSON.stringify(data));
         setUpdate(!update);
+        setClickIndex(-1);
       }
+
     } else if (type === 2) {
       setClickIndex(-1);
       setTempName("");
     }
   };
+
 
   // handle delete
   const handleDelete = (item) => {
@@ -50,15 +65,16 @@ const LocalStorage = () => {
     if (data) {
       localStorage.setItem("items", JSON.stringify(data));
     }
-    console.log("data", data);
   }, [data]);
 
   useEffect(() => {
     if (storageValue) {
       setData(storageValue);
     }
-    console.log(storageValue);
   }, []);
+
+  console.log("storageValue", storageValue)
+  console.log("data", data)
 
   return (
     <div>
