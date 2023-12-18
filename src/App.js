@@ -99,10 +99,10 @@ function App() {
   return (
     <div className="wrapper">
       {/* <Crud /> */}
-      {/* <LocalStorage /> */}
+      <LocalStorage />
       {/* <DragDrop /> */}
       {/* <Dealflow /> */}
-      <Graphs />
+      {/* <Graphs /> */}
     </div>
   );
 }
