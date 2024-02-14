@@ -48,13 +48,25 @@ body {
   padding: 10px 10px;
   width: 80%;
 
-  #chart1 svg>rect {  
+  #chart1 svg>rect {
     /*#salesChart is ID of your google chart*/
     fill: #F4F4F4;
   }
 
 
-  &_child {
-    margin: 10px 10px;
+  // &_child {
+  //   margin: 10px 10px;
+  // }
+
+  .inputSec {
+    position: relative;
+
+  }
+
+
+  .child {
+    position: absolute;
+    bottom: 0;
+    background-color: red;
   }
 }

@@ -35,17 +35,20 @@ const LocalStorage = () => {
     if (type === 1) {
       if (tempName) {
         if (findObj?.name !== tempName) {
+          console.log("a")
           findObj.name = tempName ? tempName : oldName;
           setClickIndex(-1);
           localStorage.setItem("items", JSON.stringify(data));
           setUpdate(!update);
         }
-      } else {
-        setData(data?.filter((item) => item?.id !== id))
-        localStorage.setItem("items", JSON.stringify(data));
-        setUpdate(!update);
-        setClickIndex(-1);
       }
+      // else {
+      //   console.log("b")
+      //   setData(data?.filter((item) => item?.id !== id))
+      //   localStorage.setItem("items", JSON.stringify(data));
+      //   setUpdate(!update);
+      //   setClickIndex(-1);
+      // }
 
     } else if (type === 2) {
       setClickIndex(-1);
@@ -102,37 +105,36 @@ const LocalStorage = () => {
           return (
             <tr>
               <td>{item?.id}</td>
-              {clickeIndex === index ? (
-                <>
-                  <td>
-                    <input
-                      type="text"
-                      onChange={(e) => handleUpdateField(e)}
-                      defaultValue={item?.name}
-                      placeholder="Update Value"
-                    />{" "}
-                    <button onClick={() => finalUpdate(item?.id, 1)}>
-                      Update
-                    </button>{" "}
-                    <button onClick={() => finalUpdate(item?.id, 2)}>
-                      Cancel
-                    </button>{" "}
-                  </td>{" "}
-                </>
-              ) : (
-                <>
-                  <td>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                      }}
-                    >
-                      <p onClick={() => setClickIndex(index)}>{item?.name}</p>{" "}
-                    </div>
-                  </td>
-                </>
-              )}
+              <td>
+                <div
+                  className="inputSec"
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    position: "relative"
+                  }}
+                >
+                  <p onClick={() => setClickIndex(index)}>{item?.name}</p>{" "}
+                  {clickeIndex === index && (
+                    <>
+                      <div style={{ position: "absolute", left: "0", bottom: "-12px" }}>
+                        <input
+                          type="text"
+                          onChange={(e) => handleUpdateField(e)}
+                          defaultValue={item?.name}
+                          placeholder="Update Value"
+                        />{" "}
+                        <button onClick={() => finalUpdate(item?.id, 1)}>
+                          Update
+                        </button>{" "}
+                        <button onClick={() => finalUpdate(item?.id, 2)}>
+                          Cancel
+                        </button>{" "}
+                      </div>
+                    </>
+                  )}
+                </div>
+              </td>
               <td>
                 {" "}
                 <button
@@ -148,7 +150,7 @@ const LocalStorage = () => {
           );
         })}
       </table>
-    </div>
+    </div >
   );
 };
 
