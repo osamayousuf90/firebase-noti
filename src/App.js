@@ -40,7 +40,7 @@ function App() {
       </h2>
       <br />
       <h2>{instance2}</h2>
-      <h3>This is only for dev</h3>
+      <h3>This is only for live</h3>
       <NewComponent />
       {/* <h2>{JSON.stringify(obj)}</h2> */}
       {/* <FirebaseComponent /> */}
