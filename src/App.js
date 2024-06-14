@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import FirebaseComponent from './FirebaseComponent';
 import Calender from './Components/Calender';
 import PdfViewerComponent from './Components/PdfViewer';
-import { instance } from './utils/instance';
+import { instance, instance2 } from './utils/instance';
 import NewComponent from './Components/NewComponent';
 
 function App() {
@@ -38,6 +38,8 @@ function App() {
       <h2>Hello this is baseUrl <br />
         {instance}
       </h2>
+      <br />
+      <h2>{instance2}</h2>
       <NewComponent />
       {/* <h2>{JSON.stringify(obj)}</h2> */}
       {/* <FirebaseComponent /> */}
