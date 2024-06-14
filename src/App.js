@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div>
-      <h2>Hello this is my live baseUrl <br />
+      <h2>Hello this is baseUrl <br />
         {instance}
       </h2>
       {/* <h2>{JSON.stringify(obj)}</h2> */}
