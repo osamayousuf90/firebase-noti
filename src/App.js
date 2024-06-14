@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import FirebaseComponent from './FirebaseComponent';
 import Calender from './Components/Calender';
 import PdfViewerComponent from './Components/PdfViewer';
+import { instance } from './utils/instance';
 
 function App() {
   // Generate a UUID
@@ -33,10 +34,13 @@ function App() {
 
   return (
     <div>
+      <h2>Hello this is my live baseUrl <br />
+        {instance}
+      </h2>
       {/* <h2>{JSON.stringify(obj)}</h2> */}
       {/* <FirebaseComponent /> */}
       {/* <Calender /> */}
-      <PdfViewerComponent />
+      {/* <PdfViewerComponent /> */}
     </div>
   );
 }
