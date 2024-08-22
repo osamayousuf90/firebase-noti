@@ -5,6 +5,7 @@ import Calender from './Components/Calender';
 import PdfViewerComponent from './Components/PdfViewer';
 import { instance, instance2 } from './utils/instance';
 import NewComponent from './Components/NewComponent';
+import LocalStorage from './Components/LocalStorage';
 
 function App() {
   // Generate a UUID
@@ -34,19 +35,20 @@ function App() {
   // }, [])
 
   return (
-    <div>
+    <>
       <h2>Hello this is baseUrl <br />
         {instance}
       </h2>
       <br />
-      <h2>{instance2}</h2>
+      {/* <h2>{instance2}</h2> */}
       <h3>This is only for live</h3>
-      <NewComponent />
+      {/* <NewComponent /> */}
       {/* <h2>{JSON.stringify(obj)}</h2> */}
       {/* <FirebaseComponent /> */}
       {/* <Calender /> */}
       {/* <PdfViewerComponent /> */}
-    </div>
+      {/* <LocalStorage /> */}
+    </>
   );
 }
 
