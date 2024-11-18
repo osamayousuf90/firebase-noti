@@ -20,7 +20,6 @@ const User = (set, get) => ({
         set({ ...get(), loader: true });
         try {
             const res = await axios.get("https://jsonplaceholder.typicode.com/users");
-            console.log('res', res)
             set({ ...get(), loader: false, allUsers: res.data });
         } catch (err) {
             console.error("Error in data fetch:", err);
